@@ -35,6 +35,18 @@ O dataset está embutido no próprio `index.html` (constante `DATA`) e foi sanit
 | `status` | Estado da encomenda (ex.: Delivered, Pending, In Transit, Cancelled) |
 
 **Resumo do conjunto:** 100 registos · 40 modelos · 7 *model years* · 79 cidades · 9 métodos de pagamento.
+## Perguntas de negócio
+
+      **1. Quais são os modelos Porsche mais vendidos?**
+      Permite identificar os modelos com maior procura.
+
+      **2. Quais são as cidades com maior número de vendas?**
+      Permite identificar os mercados urbanos com maior atividade comercial.
+
+      **3. Quais são os estados com maior número de vendas?**
+      Permite comparar a distribuição geográfica das vendas e identificar os estados com maior concentração de clientes.
+
+      Estas perguntas permitem analisar a procura por modelo e a distribuição geográfica das vendas, utilizando os filtros disponíveis na dashboard.
 
 ## Notas de qualidade dos dados
 
