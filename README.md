@@ -1,94 +1,216 @@
-# Porsche — Sales Intelligence
+# Porsche Sales Intelligence Dashboard
 
-Dashboard interativo de vendas, desenvolvido no âmbito de um desafio da DIO. Transforma um conjunto de dados brutos de vendas Porsche em informação visual: indicadores, rankings e gráficos que se atualizam em tempo real conforme os filtros escolhidos.
+Dashboard interativo desenvolvido no âmbito do desafio da DIO para análise de vendas Porsche através de HTML, CSS e JavaScript.
 
-Tudo corre num único ficheiro (`index.html`), sem instalações, sem servidor e sem dependências externas.
+A solução transforma uma base de dados de vendas numa dashboard visual e interativa, permitindo explorar indicadores, gráficos e filtros sem depender do Excel ou de qualquer ferramenta externa.
 
-## Funcionalidades
+## Dashboard Publicada
 
-- **Filtros combináveis** por modelo, *model year*, cidade e método de pagamento, com botão para limpar tudo.
-- **4 indicadores (KPIs):** vendas registadas, valor total de vendas, modelo líder e *model year* dominante.
-- **Gráficos em SVG:**
-  - Modelos mais vendidos (Top 8)
-  - Vendas por cidade (Top 8)
-  - Distribuição por *model year*
-  - Métodos de pagamento (gráfico em anel com legenda)
-- **Leitura do mercado:** três insights gerados automaticamente a partir do recorte filtrado.
-- **Modelos populares por cidade** e **tabela-resumo por cidade** (unidades, modelo líder e quota do líder).
-- **Canvas editável:** o botão *Editar canvas* permite alterar os textos do dashboard diretamente; as alterações ficam guardadas no navegador (`localStorage`).
-- **Responsivo:** adapta-se a ecrãs de computador, tablet e telemóvel.
+🔗 Dashboard: https://am2989.github.io/dashboard-porsche_sales/
 
-## Dados utilizados
+🔗 Repositório: https://github.com/am2989/dashboard-porsche_sales
 
-O dataset está embutido no próprio `index.html` (constante `DATA`) e foi sanitizado antes de ser usado.
+---
 
-| Campo | Descrição |
-|---|---|
-| `id` | Identificador do registo |
-| `date` | Data da venda (pode estar vazia) |
-| `model` | Modelo Porsche |
-| `year` | *Model year* |
-| `price` | Valor registado da venda |
-| `mileage` | Quilometragem |
-| `pay` | Método de pagamento |
-| `city` / `state` | Cidade e estado |
-| `status` | Estado da encomenda (ex.: Delivered, Pending, In Transit, Cancelled) |
+# Objetivo do Projeto
 
-**Resumo do conjunto:** 100 registos · 40 modelos · 7 *model years* · 79 cidades · 9 métodos de pagamento.
-## Perguntas de negócio
+O objetivo deste projeto foi transformar uma planilha de vendas Porsche numa dashboard web interativa que permitisse responder a perguntas reais de negócio através de visualizações de dados simples e intuitivas.
 
-      **1. Quais são os modelos Porsche mais vendidos?**
-      Permite identificar os modelos com maior procura.
+Toda a aplicação está contida num único ficheiro HTML, sem dependências externas e pronta para publicação no GitHub Pages.
 
-      **2. Quais são as cidades com maior número de vendas?**
-      Permite identificar os mercados urbanos com maior atividade comercial.
+---
 
-      **3. Quais são os estados com maior número de vendas?**
-      Permite comparar a distribuição geográfica das vendas e identificar os estados com maior concentração de clientes.
+# Perguntas de Negócio Escolhidas
 
-      Estas perguntas permitem analisar a procura por modelo e a distribuição geográfica das vendas, utilizando os filtros disponíveis na dashboard.
+## 1. Quais são os modelos Porsche mais vendidos?
 
-## Notas de qualidade dos dados
+### Porquê?
 
-- **24 registos sem data válida:** são mantidos nas métricas de vendas e excluídos de qualquer análise temporal.
-- **Moeda não especificada:** os valores são apresentados tal como constam no ficheiro, sem validação nem conversão de moeda.
-- **Empates:** vários modelos têm o mesmo número de unidades (4); o "modelo líder" mostrado corresponde ao primeiro na ordenação, pelo que deve ser lido com essa ressalva.
-- **Datas fora do esperado:** existem datas posteriores à data atual no conjunto, o que deve ser validado na origem dos dados.
+Esta análise permite identificar quais os modelos com maior procura no mercado, ajudando equipas comerciais e de marketing a compreender tendências de consumo.
 
-## Como executar (reprodução)
+### Visualização Utilizada
 
-1. Descarregue ou clone este repositório:
-   ```bash
-   git clone [https://github.com/am2989/dashboard-porsche_sales).git
-   ```
-2. Abra o ficheiro `index.html` num navegador (duplo clique chega).
-3. Use os filtros no topo para explorar os dados.
+- Gráfico "Modelos mais vendidos"
 
-### Publicar online com GitHub Pages (opcional)
+---
 
-1. No repositório, vá a **Settings → Pages**.
-2. Em **Source**, escolha a branch `main` e a pasta `/ (root)`.
-3. Guarde. Ao fim de alguns minutos o dashboard fica disponível em `https://github.com/am2989/dashboard-porsche_sales`.
+## 2. Em que cidades existe maior concentração de vendas?
 
-## Para usar outros dados
+### Porquê?
 
-Substitua o conteúdo da constante `DATA` no `index.html` por uma lista de objetos com os mesmos campos descritos acima. Os filtros, KPIs e gráficos adaptam-se automaticamente.
+Permite identificar os mercados mais relevantes e as regiões onde existe maior procura pelos veículos da marca.
 
-## Tecnologias
+### Visualização Utilizada
 
-- HTML5, CSS3 e JavaScript (vanilla)
-- Gráficos desenhados em SVG, sem bibliotecas externas
+- Gráfico "Vendas por cidade"
+- Tabela resumo por cidade
+- Ranking de modelos líderes por cidade
 
-## Estrutura do repositório
+---
 
+## 3. Quais são os métodos de pagamento preferidos pelos clientes?
+
+### Porquê?
+
+Ajuda a compreender o comportamento de compra dos clientes e pode apoiar decisões relacionadas com financiamento, crédito e processos financeiros.
+
+### Visualização Utilizada
+
+- Gráfico de distribuição dos métodos de pagamento
+
+---
+
+# Tratamento da Base de Dados
+
+Antes da utilização da IA para gerar a dashboard, foi realizado o tratamento da base de dados disponibilizada no desafio:
+
+- Utilização apenas dos campos sanitizados.
+- Conversão dos campos numéricos para formato adequado.
+- Validação dos campos de preço e ano.
+- Remoção de dependências de fórmulas da folha de cálculo.
+- Preservação dos registos com datas inválidas para análises gerais.
+- Exclusão dessas datas em análises temporais.
+
+Após o tratamento, os dados foram incorporados diretamente no HTML através de uma estrutura JavaScript.
+
+---
+
+# Prompt Utilizado
+
+O prompt inicial utilizado para gerar a dashboard foi semelhante ao seguinte:
+
+> Cria uma dashboard em HTML único para análise de vendas Porsche.
+>
+> A dashboard deve conter:
+>
+> - Filtros por modelo, cidade, ano e método de pagamento;
+> - Indicadores de total de vendas e receita;
+> - Gráfico dos modelos mais vendidos;
+> - Gráfico das vendas por cidade;
+> - Gráfico da distribuição por métodos de pagamento;
+> - Layout moderno inspirado em dashboards executivas;
+> - Design responsivo para computador e dispositivos móveis;
+> - Utilização exclusiva de HTML, CSS e JavaScript.
+
+---
+
+# Evolução do Prompt
+
+Ao longo do desenvolvimento foram feitos vários refinamentos:
+
+### Versão Inicial
+
+- Apenas KPIs e gráficos básicos.
+
+### Melhorias Adicionadas
+
+- Ranking dos modelos mais populares por cidade.
+- Insights automáticos baseados nos filtros ativos.
+- Tabela resumida por cidade.
+- Melhor responsividade para dispositivos móveis.
+- Modo de edição do conteúdo textual.
+- Melhor organização visual inspirada em dashboards empresariais.
+
+---
+
+# Funcionalidades Implementadas
+
+## Filtros
+
+- Modelo Porsche
+- Ano do modelo
+- Cidade
+- Método de pagamento
+
+## Indicadores (KPIs)
+
+- Total de vendas
+- Receita total
+- Modelo líder
+- Ano dominante
+
+## Visualizações
+
+- Top 8 modelos mais vendidos
+- Top 8 cidades com mais vendas
+- Distribuição por model year
+- Distribuição por método de pagamento
+- Ranking de líderes por cidade
+- Tabela resumo por cidade
+
+## Extras
+
+- Insights automáticos
+- Interface responsiva
+- Canvas editável
+- Armazenamento local das alterações (localStorage)
+
+---
+
+# Tecnologias Utilizadas
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
+- SVG para gráficos
+- GitHub Pages para publicação
+
+---
+
+# Estrutura do Projeto
+
+```text
+dashboard-porsche_sales
+│
+├── index.html
+└── README.md
 ```
-.
-├── index.html   # Dashboard completo (interface, dados e lógica)
-└── README.md    # Este ficheiro
+
+---
+
+# Como Executar
+
+1. Clonar o repositório:
+
+```bash
+git clone https://github.com/am2989/dashboard-porsche_sales.git
 ```
 
-## Autoria
+2. Abrir o ficheiro:
 
-Desenvolvido por **Alda Benta** no âmbito de um desafio de dashboard de vendas da DIO.
+```text
+index.html
+```
 
-> Interface demonstrativa para exploração do ficheiro fornecido. Projeto com fins formativos, sem qualquer ligação oficial à Porsche.
+em qualquer navegador moderno.
+
+---
+
+# Evidências do Projeto
+
+Sugere-se incluir:
+
+- Captura de ecrã da dashboard.
+- Captura de ecrã com filtros aplicados.
+- Captura de ecrã da publicação no GitHub Pages.
+
+Estas evidências ajudam a demonstrar o correto funcionamento da solução.
+
+---
+
+# Conclusão
+
+Este projeto demonstra como uma folha de cálculo pode ser transformada numa dashboard web interativa através de IA generativa, HTML, CSS e JavaScript.
+
+A dashboard permite responder rapidamente a questões de negócio relacionadas com procura por modelos, distribuição geográfica das vendas e preferências de pagamento, disponibilizando uma alternativa mais flexível e visual do que uma análise tradicional em Excel.
+
+---
+
+## Autor
+
+**Alda Benta**
+
+Projeto desenvolvido para o desafio da DIO - Dashboard Porsche Sales.
+
+Este projeto tem fins exclusivamente educativos e não possui qualquer afiliação oficial com a Porsche.
+
